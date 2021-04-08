@@ -18,8 +18,8 @@ const port = process.env.PORT || 8080;
 var app = express();
 app.use(cors());
 
-// serve frotnend
-app.use(express.static(path.join(__dirname, 'dist/Frontend')))
+// use static files
+app.use(express.static(path.join(__dirname, 'dist/movie-app')))
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -42,7 +42,7 @@ app.use("/apis/cast/:cast_id", castDetailsRouter);
 // redirect all other traffic to homepage
 app.use("/apis/*", indexRouter);
 app.use("/*", function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/Frontend/index.html'));
+  res.sendFile(path.join(__dirname + '/dist/movie-app/index.html'));
 })
 
 // catch 404 and forward to error handler

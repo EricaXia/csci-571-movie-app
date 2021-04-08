@@ -1,0 +1,147 @@
+<!-- REGULAR screen size -->
+<div *ngIf="isReg && !isSm">
+
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ cast_details.cast.name }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+
+    <!-- Row with Image and Details -->
+    <div class="row flex-nowrap">
+      <div class="col img-box">
+        <img src="{{ cast_details.cast.img_path }}" class="modal-img">
+      </div>
+      <div class="col-8 details-col" *ngIf="cast_details">
+
+        <p *ngIf="cast_details.cast.birthday">Birth: {{ cast_details.cast.birthday }} </p>
+        <p *ngIf="cast_details.cast.place_of_birth">Birthplace: {{ cast_details.cast.place_of_birth }} </p>
+        <p *ngIf="cast_details.cast.gender_str">Gender: {{ cast_details.cast.gender_str }} </p>
+        <p *ngIf="cast_details.cast.known_for">Known For: {{ cast_details.cast.known_for }} </p>
+        <p *ngIf="cast_details.cast.also_known_as?.length > 1">Also Known as: {{ cast_details.cast.also_known_as }} </p>
+        <div *ngIf="cast_details.cast.external_ids">
+          <!-- IMDB -->
+          <div *ngIf="cast_details.cast.external_ids.imdb_id" class="icon" ngbPopover="Visit IMDB"
+            triggers="mouseenter:mouseleave">
+            <a href="https://www.imdb.com/name/{{ cast_details.cast.external_ids.imdb_id }}" target="_blank">
+              <fa-icon [icon]="faImdb" style="color:#E0B63D;" class="fas fa-2x"></fa-icon>
+            </a>
+          </div>
+
+          <!-- FB -->
+          <div *ngIf="cast_details.cast.external_ids.facebook_id" class="icon" ngbPopover="Visit Facebook"
+            triggers="mouseenter:mouseleave">
+            <a href="https://www.facebook.com/{{ cast_details.cast.external_ids.facebook_id }}" target="_blank">
+              <fa-icon [icon]="faFacebook" style="color:#393EE8;" class="fas fa-2x"></fa-icon>
+            </a>
+          </div>
+
+          <!-- TW -->
+          <div *ngIf="cast_details.cast.external_ids.twitter_id" class="icon" ngbPopover="Visit Twitter"
+            triggers="mouseenter:mouseleave">
+            <a href="https://www.twitter.com/{{ cast_details.cast.external_ids.twitter_id }}" target="_blank">
+              <fa-icon [icon]="faTwitter" style="color:#558FE9;" class="fas fa-2x"></fa-icon>
+            </a>
+          </div>
+
+          <!-- ig -->
+          <div *ngIf="cast_details.cast.external_ids.instagram_id" class="icon" ngbPopover="Visit Instagram"
+            triggers="mouseenter:mouseleave">
+            <a href="https://www.instagram.com/{{ cast_details.cast.external_ids.instagram_id }}" target="_blank">
+              <fa-icon [icon]="faInstagram" style="color: #79567F;" class="fas fa-2x"></fa-icon>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="cast_details.cast.biography">
+      <h3>Biography</h3>
+      <p> {{ cast_details.cast.biography }}</p>
+    </div>
+    <!-- End Modal Body -->
+  </div>
+
+  <!-- End Modal -->
+</div>
+
+
+
+<!-- MOBILE MODAL -->
+
+<div *ngIf="!isReg && isSm">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ cast_details.cast.name }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!-- Image row -->
+    <!-- flex-wrap -->
+    <div class="row align-items-center">
+      <div class="col d-flex justify-content-center img-box">
+        <img src="{{ cast_details.cast.img_path }}" class="modal-img mx-auto mx-md-0">
+      </div>
+    </div>
+    <!-- Details row -->
+    <div class="row flex-wrap">
+      <div *ngIf="cast_details" class="details-m">
+        <p *ngIf="cast_details.cast.birthday">Birth: {{ cast_details.cast.birthday }} </p>
+        <p *ngIf="cast_details.cast.place_of_birth">Birthplace: {{ cast_details.cast.place_of_birth }} </p>
+        <p *ngIf="cast_details.cast.gender_str">Gender: {{ cast_details.cast.gender_str }} </p>
+        <p *ngIf="cast_details.cast.known_for">Known For: {{ cast_details.cast.known_for }} </p>
+        <p *ngIf="cast_details.cast.also_known_as?.length > 1">Also Known as: {{ cast_details.cast.also_known_as }} </p>
+        <div *ngIf="cast_details.cast.external_ids">
+
+
+          <!-- IMDB -->
+          <div *ngIf="cast_details.cast.external_ids.imdb_id" class="icon" ngbPopover="Visit IMDB"
+            triggers="mouseenter:mouseleave">
+            <a href="https://www.imdb.com/name/{{ cast_details.cast.external_ids.imdb_id }}" target="_blank">
+              <fa-icon [icon]="faImdb" style="color:#E0B63D;" class="fas fa-1x"></fa-icon>
+            </a>
+          </div>
+
+          <!-- FB -->
+          <div *ngIf="cast_details.cast.external_ids.facebook_id" class="icon" ngbPopover="Visit Facebook"
+            triggers="mouseenter:mouseleave">
+            <a href="https://www.facebook.com/{{ cast_details.cast.external_ids.facebook_id }}" target="_blank">
+              <fa-icon [icon]="faFacebook" style="color:#393EE8;" class="fas fa-1x"></fa-icon>
+            </a>
+          </div>
+
+          <!-- TW -->
+          <div *ngIf="cast_details.cast.external_ids.twitter_id" class="icon" ngbPopover="Visit Twitter"
+            triggers="mouseenter:mouseleave">
+            <a href="https://www.twitter.com/{{ cast_details.cast.external_ids.twitter_id }}" target="_blank">
+              <fa-icon [icon]="faTwitter" style="color:#558FE9;" class="fas fa-1x"></fa-icon>
+            </a>
+          </div>
+
+          <!-- ig -->
+          <div *ngIf="cast_details.cast.external_ids.instagram_id" class="icon" ngbPopover="Visit Instagram"
+            triggers="mouseenter:mouseleave">
+            <a href="https://www.instagram.com/{{ cast_details.cast.external_ids.instagram_id }}" target="_blank">
+              <fa-icon [icon]="faInstagram" style="color: #79567F;" class="fas fa-1x"></fa-icon>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="cast_details.cast.biography">
+      <div class="col">
+        <h3>Biography</h3>
+        <p> {{ cast_details.cast.biography }}</p>
+      </div>
+    </div>
+    <!-- End Modal Body -->
+  </div>
+  <!-- End mobile modal -->
+</div>

@@ -1,0 +1,505 @@
+/* LARGE */
+@media only screen and (min-width: 1600px) {
+  .descrip {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .col-details {
+    padding: 0 0 0 15%;
+    margin: 0;
+    width: 200%;
+  }
+
+  .container {
+    padding: 2% 2% 2% 2%;
+    /* margin: 0 10% 0 30%; */
+  }
+  .avatar {
+    width: 60px;
+    height: 60px;
+  }
+  .review-card {
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+  .rating {
+    display: inline-block;
+    background-color: #000000;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    font-size: smaller;
+    border-radius: 15px;
+    margin-left: 10px;
+    position: absolute;
+  }
+  .col-video {
+    margin: 0;
+    /* text-align: left; */
+  }
+
+  .card-img-caption {
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .mycard {
+    flex-wrap: wrap;
+    flex-direction: row;
+    z-index: 0;
+  }
+  .mycarousel {
+    width: inherit;
+    margin: auto;
+    padding-left: 2.5%;
+  }
+  .slide-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 250px !important;
+    width: 180px !important;
+    transition: all 0.3s ease;
+    z-index: 0;
+  }
+
+  .row-less .slide-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 250px !important;
+    width: 180px !important;
+  }
+  .card-img-caption .my-carousel-caption2 {
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.4s;
+    background-image: linear-gradient(
+      transparent,
+      rgba(0, 0, 0, 0.856) 80%,
+      black 100%
+    );
+    bottom: 50px;
+    padding-bottom: 40px;
+    position: relative;
+    width: 180px;
+  }
+
+  .card-img-caption:hover .my-carousel-caption2 {
+    cursor: pointer;
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+/* MEDIUM */
+@media only screen and (max-width: 1599px) {
+  .col-video {
+    margin-left: -20px !important;
+    margin-right: 0 !important;
+    /* text-align: left; */
+  }
+  .descrip {
+    padding: 0;
+    margin: auto;
+    /* margin-left: 20px; */
+  }
+
+  .col-details {
+    padding: 0 0 0 5%;
+    margin-left: 0 !important;
+    width: 200%;
+  }
+
+  .container {
+    padding: 1%;
+    margin: 0 2% 0 10%;
+  }
+  .avatar {
+    width: 60px;
+    height: 60px;
+  }
+  .review-card {
+    margin-top: 10px;
+    border-radius: 10px;
+  }
+  .rating {
+    display: inline-block;
+    background-color: #000000;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    font-size: smaller;
+    border-radius: 15px;
+    margin-left: 10px;
+    position: absolute;
+  }
+  .col-video {
+    /* margin-left: -120px; */
+    margin: auto;
+    text-align: left;
+  }
+
+  .card-img-caption {
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .mycard {
+    flex-wrap: wrap;
+    flex-direction: row;
+    z-index: 0;
+  }
+  .mycarousel {
+    width: inherit;
+    margin: auto;
+    padding-left: 2.5%;
+  }
+  .slide-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 250px !important;
+    width: 180px !important;
+    transition: all 0.3s ease;
+    z-index: 0;
+  }
+
+  .row-less .slide-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 250px !important;
+    width: 180px !important;
+  }
+  .card-img-caption .my-carousel-caption2 {
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.4s;
+    background-image: linear-gradient(
+      transparent,
+      rgba(0, 0, 0, 0.856) 80%,
+      black 100%
+    );
+    bottom: 50px;
+    padding-bottom: 40px;
+    position: relative;
+    width: 180px;
+  }
+
+  .card-img-caption:hover .my-carousel-caption2 {
+    cursor: pointer;
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .col-video {
+    margin: 0;
+    /* text-align: left; */
+  }
+  .mycard {
+    flex-wrap: wrap;
+    flex-direction: row;
+    z-index: 0;
+  }
+  .mycarousel {
+    width: inherit;
+    margin: auto;
+    /* height: 500px; */
+    padding-left: 1%;
+  }
+
+  .carousel-indicators {
+    visibility: hidden;
+  }
+
+  .carousel-control-prev {
+    z-index: 20;
+    transform: translate(-10px, 0px);
+  }
+
+  .carousel-control-next {
+    z-index: 20;
+    transform: translate(10px, 0px);
+  }
+
+  .slide-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 150% !important;
+    width: 100% !important;
+    transition: all 0.3s ease;
+    z-index: 0;
+  }
+
+  .card-img-caption .my-carousel-caption2 {
+    opacity: 1;
+    z-index: 1;
+    background-image: linear-gradient(
+      transparent,
+      rgba(0, 0, 0, 0.856) 80%,
+      black 100%
+    );
+    bottom: 50px;
+    padding-bottom: 30px;
+    position: relative;
+    width: 99%;
+  }
+  .container {
+    padding: 2%;
+    margin: 0 0 0 3%;
+  }
+
+  .avatar {
+    width: 100px !important;
+    height: 100px !important;
+    max-width: 100px !important;
+    max-height: 100px !important;
+    padding-left: 10%;
+    /* margin-bottom: 2%; */
+  }
+
+  .review-card {
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 94%;
+  }
+  .rating {
+    display: block;
+    background-color: #000000;
+    color: white;
+    padding: 5px 10px 5px 10px;
+    font-size: smaller;
+    border-radius: 15px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    position: absolute;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: white;
+}
+
+/* Bootstrap grid */
+.my-row {
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
+.desc-text {
+  color: #9596b1;
+}
+
+.details-title {
+  font-size: medium;
+  font-weight: 500;
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.details-text {
+  word-wrap: break-word;
+}
+
+.share-div {
+  margin-left: -1px;
+  padding-left: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .share-div {
+    margin-left: auto;
+  }
+}
+
+.share-btn {
+  display: inline-block;
+  padding-right: 8px;
+  padding-left: 0;
+  padding-top: 0;
+  margin-left: 0;
+  margin-top: 0%;
+  text-decoration: none;
+}
+
+/* CAST AND CREW section */
+.cast-container {
+  margin-top: 3%;
+}
+
+.my-flex {
+  margin-left: 0;
+}
+
+.my-card {
+  border-radius: 20px;
+  height: 400px;
+  min-width: 160px;
+  margin: 0;
+  padding: 0;
+}
+
+.my-card-text {
+  color: black;
+  text-align: center;
+}
+
+.my-card-img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  /* max-height: 200px; */
+}
+
+/* REVIEWS section */
+/* .review-card {
+  margin-top: 10px;
+  border-radius: 10px;
+} */
+
+.review-font {
+  color: black !important;
+  display: inline-block;
+}
+
+.review-font-gray {
+  color: gray;
+}
+
+.review-link {
+  text-decoration: underline;
+}
+
+/* Open modal */
+.open-modal {
+  cursor: pointer;
+  outline: none;
+}
+
+@media only screen and (min-width: 1600px) {
+  .my-modal-class .modal-dialog {
+    max-width: 60%;
+    /* max-height: 500px; */
+  }
+}
+@media only screen and (max-width: 1599px) {
+  .my-modal-class .modal-dialog {
+    max-width: 70%;
+    /* max-height: 500px; */
+  }
+}
+@media only screen and (max-width: 600px) {
+  .my-modal-class .modal-dialog {
+    max-width: 400px;
+    /* width: 410px; */
+    /* text-align: center; */
+  }
+}
+
+/* HOME COPIED */
+
+ngb-carousel {
+  max-width: 80%;
+  margin: 50px auto;
+  outline: none;
+}
+
+ngb-carousel img {
+  width: 100%;
+  outline: none;
+}
+
+.carousel-inner {
+  padding: 15px;
+}
+
+/* Hover effects for main carousel */
+.my-carousel-caption {
+  opacity: 0;
+  /* z-index: 2; */
+  transition: all 0.4s;
+  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.795), black);
+  height: 35%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
+
+.caption-font {
+  color: #fff;
+  font-weight: 400;
+  font-size: medium;
+  text-align: left;
+  padding-left: 6%;
+  padding-top: 5%;
+}
+
+.curr_playing_img:hover .my-carousel-caption {
+  z-index: 2;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.carousel-indicators {
+  z-index: 20;
+  bottom: -50px !important;
+}
+
+.carousel-control-prev {
+  z-index: 20;
+  transform: translate(-80px, 0px);
+}
+
+.carousel-control-next {
+  z-index: 20;
+  transform: translate(80px, 0px);
+}
+
+.section-heading {
+  padding: 0 0 0 12%;
+}
+
+.movie-container {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.row-less {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start !important;
+}
+
+.row-m {
+  width: 100%;
+  /* height: 500px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Image for each mini carousel item: */
+
+.slide-item:hover {
+  transform: scale(1.08);
+  cursor: pointer;
+}
+
+.caption-font2 {
+  color: #fff;
+  font-weight: 400;
+  font-size: medium;
+  text-align: left;
+  padding-left: 6%;
+}

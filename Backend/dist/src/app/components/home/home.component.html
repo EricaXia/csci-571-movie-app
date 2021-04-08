@@ -1,0 +1,555 @@
+<ngb-carousel *ngIf="curr_movies" class="curr-carousel" [pauseOnHover]="true" [pauseOnFocus]="true" interval="500000">
+  <ng-template ngbSlide>
+    <div class="curr_playing_img">
+      <a href="/watch/movie/{{curr_movies[0]?.id}}">
+        <img
+          [src]="curr_movies[0]?.img_path"
+          id="{{curr_movies[0]?.id}}"
+          class="curr_playing_img"
+        />
+      </a>
+
+      <div class="carousel-caption my-carousel-caption">
+        <div class="caption-font">{{curr_movies[0]?.title}}</div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template ngbSlide>
+    <div class="curr_playing_img">
+      <a href="/watch/movie/{{curr_movies[1]?.id}}">
+        <img
+          [src]="curr_movies[1]?.img_path"
+          id="{{curr_movies[1]?.id}}"
+          class="curr_playing_img"
+        />
+      </a>
+      <div class="carousel-caption my-carousel-caption">
+        <div class="caption-font">{{curr_movies[1]?.title}}</div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template ngbSlide>
+    <div class="curr_playing_img">
+      <a href="/watch/movie/{{curr_movies[2]?.id}}">
+        <img
+          [src]="curr_movies[2]?.img_path"
+          id="{{curr_movies[2]?.id}}"
+          class="curr_playing_img"
+        />
+      </a>
+      <div class="carousel-caption my-carousel-caption">
+        <div class="caption-font">{{curr_movies[2]?.title}}</div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template ngbSlide>
+    <div class="curr_playing_img">
+      <a href="/watch/movie/{{curr_movies[3]?.id}}">
+        <img
+          [src]="curr_movies[3]?.img_path"
+          id="{{curr_movies[3]?.id}}"
+          class="curr_playing_img"
+        />
+      </a>
+      <div class="carousel-caption my-carousel-caption">
+        <div class="caption-font">{{curr_movies[3]?.title}}</div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template ngbSlide>
+    <div class="curr_playing_img">
+      <a href="/watch/movie/{{curr_movies[4]?.id}}">
+        <img
+          [src]="curr_movies[4]?.img_path"
+          id="{{curr_movies[4]?.id}} "
+          class="curr_playing_img"
+        />
+      </a>
+      <div class="carousel-caption my-carousel-caption">
+        <div class="caption-font">{{curr_movies[4]?.title}}</div>
+      </div>
+    </div>
+  </ng-template>
+  <!-- End Currntly Playing Movies -->
+</ngb-carousel>
+
+<!-- Continue Watching -->
+<div class="movie-container" *ngIf="continue_watching.length > 0">
+  <h2 class="section-heading">Continue Watching</h2>
+  <!-- For REGULAR size -->
+  <div *ngIf="isReg && !isSm">
+    <ngb-carousel [interval]="0" class="mycarousel">
+      <div *ngFor="let arr of continue_watching">
+        <!-- make row of 6 movies -->
+        <ng-template ngbSlide>
+          <!-- <div class="row flex-nowrap"> -->
+          <div [ngClass]="{ 'row': arr.length == 6, 'row-less': arr.length != 6}" class="flex-nowrap">
+            <!-- for every row, add 6 movies from subarr -->
+            <div *ngFor="let m of arr">
+              <div *ngIf="m.poster_path">
+                <!-- For each movie in subarr of 6  movies, make this: -->
+                <div class="col-xs-8 mycard">
+                  <!-- Container for link, image, and caption: -->
+                  <div class="card-img-caption">
+                    <a href="/watch/movie/{{ m?.id }}">
+                      <img
+                        src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                        alt="{{m.title}}"
+                        class="slide-item"
+                        id="{{m?.id}}"
+                    /></a>
+                    <div class="my-carousel-caption2">
+                      <div class="card-text caption-font2">{{ m.title }}</div>
+                    </div>
+                    <!-- End of card-img-caption -->
+                  </div>
+                  <!-- End of mycard -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </ngb-carousel>
+  </div>
+</div>
+
+<!-- Continue Watching -->
+<!-- FOR MOBILE -->
+<div *ngIf="isSm && continue_watching2.length > 0">
+  <ngb-carousel [interval]="0" class="mycarousel">
+    <div *ngFor="let m of continue_watching2">
+      <div *ngIf="m.poster_path">
+        <ng-template ngbSlide>
+          <div class="row-m flex-nowrap">
+            <div class="col mycard">
+              <div class="card-img-caption">
+                <a href="/watch/movie/{{ m?.id }}">
+                  <img
+                    src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                    alt="{{m.title}}"
+                    class="slide-item"
+                    id="{{m?.id}}"
+                /></a>
+                <div class="my-carousel-caption2">
+                  <div class="card-text caption-font2">{{ m.title }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <!-- End mobile template -->
+  </ngb-carousel>
+  <!-- End movie container -->
+</div>
+
+<!-- Popular Movies -->
+<div class="movie-container">
+  <h2 class="section-heading">Popular Movies</h2>
+  <!-- For REGULAR size -->
+  <div *ngIf="isReg && !isSm">
+    <ngb-carousel [interval]="0" *ngIf="popular_movies2" class="mycarousel">
+      <div *ngFor="let arr of popular_movies2">
+        <!-- make row of 6 movies -->
+        <ng-template ngbSlide>
+          <div [ngClass]="{ 'row': arr.length == 6, 'row-less': arr.length < 6}" class="flex-nowrap">
+            <!-- for every row, add 6 movies from subarr -->
+            <div *ngFor="let m of arr">
+              <div *ngIf="m.poster_path">
+                <!-- For each movie in subarr of 6  movies, make this: -->
+                <div class="col-xs-8 mycard">
+                  <!-- Container for link, image, and caption: -->
+                  <div class="card-img-caption">
+                    <a href="/watch/movie/{{ m?.id }}">
+                      <img
+                        src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                        alt="{{m.title}}"
+                        class="slide-item"
+                        id="{{m?.id}}"
+                    /></a>
+                    <div class="my-carousel-caption2">
+                      <div class="card-text caption-font2">{{ m.title }}</div>
+                    </div>
+                    <!-- End of card-img-caption -->
+                  </div>
+                  <!-- End of mycard -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </ngb-carousel>
+  </div>
+</div>
+
+<!-- Popular Movies -->
+<!-- FOR MOBILE -->
+<div *ngIf="isSm && popular_movies3.length > 0">
+  <ngb-carousel [interval]="0" class="mycarousel">
+    <div *ngFor="let m of popular_movies3">
+      <div *ngIf="m.poster_path">
+        <ng-template ngbSlide>
+          <div class="row-m flex-nowrap">
+            <div class="col mycard">
+              <div class="card-img-caption">
+                <a href="/watch/movie/{{ m?.id }}">
+                  <img
+                    src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                    alt="{{m.title}}"
+                    class="slide-item"
+                    id="{{m?.id}}"
+                /></a>
+                <div class="my-carousel-caption2">
+                  <div class="card-text caption-font2">{{ m.title }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <!-- End ngFor -->
+      </div>
+    </div>
+    <!-- End mobile template -->
+  </ngb-carousel>
+  <!-- End movie container -->
+</div>
+
+<!-- Top Rated Movies -->
+<div class="movie-container">
+  <h2 class="section-heading">Top Rated Movies</h2>
+  <div *ngIf="isReg && !isSm">
+    <ngb-carousel [interval]="0" *ngIf="top_rated_movies2" class="mycarousel">
+      <div *ngFor="let arr of top_rated_movies2">
+        <ng-template ngbSlide>
+          <div [ngClass]="{ 'row': arr.length == 6, 'row-less': arr.length < 6}" class="flex-nowrap">
+            <div *ngFor="let m of arr">
+              <div *ngIf="m.poster_path">
+                <div class="col-xs-8 mycard">
+                  <div class="card-img-caption">
+                    <a href="/watch/movie/{{ m?.id }}">
+                      <img
+                        src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                        alt="{{m.title}}"
+                        class="slide-item"
+                        id="{{m?.id}}"
+                    /></a>
+                    <div class="my-carousel-caption2">
+                      <div class="card-text caption-font2">{{ m.title }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </ngb-carousel>
+  </div>
+</div>
+
+<!-- Top Rated Movies -->
+<!-- FOR MOBILE -->
+<div *ngIf="isSm && top_rated_movies3.length > 0">
+  <ngb-carousel [interval]="0" class="mycarousel">
+    <div *ngFor="let m of top_rated_movies3">
+      <div *ngIf="m.poster_path">
+        <ng-template ngbSlide>
+          <div class="row-m flex-nowrap">
+            <div class="col mycard">
+              <div class="card-img-caption">
+                <a href="/watch/movie/{{ m?.id }}">
+                  <img
+                    src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                    alt="{{m.title}}"
+                    class="slide-item"
+                    id="{{m?.id}}"
+                /></a>
+                <div class="my-carousel-caption2">
+                  <div class="card-text caption-font2">{{ m.title }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <!-- End mobile template -->
+  </ngb-carousel>
+  <!-- End movie container -->
+</div>
+
+<!-- Trending Movies -->
+<div class="movie-container">
+  <h2 class="section-heading">Trending Movies</h2>
+  <div *ngIf="isReg && !isSm">
+    <ngb-carousel [interval]="0" *ngIf="trending_movies2" class="mycarousel">
+      <div *ngFor="let arr of trending_movies2">
+        <!-- make row of 6 movies -->
+        <ng-template ngbSlide>
+          <div [ngClass]="{ 'row': arr.length == 6, 'row-less': arr.length < 6}" class="flex-nowrap">
+            <!-- for every row, add 6 movies from subarr -->
+            <div *ngFor="let m of arr">
+              <div *ngIf="m.poster_path">
+                <div class="col-xs-8 mycard">
+                  <div class="card-img-caption">
+                    <a href="/watch/movie/{{ m?.id }}">
+                      <img
+                        src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                        alt="{{m.title}}"
+                        class="slide-item"
+                        id="{{m?.id}}"
+                    /></a>
+                    <div class="my-carousel-caption2">
+                      <div class="card-text caption-font2">{{ m.title }}</div>
+                    </div>
+
+                    <!-- End of card-img-caption -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </ngb-carousel>
+  </div>
+</div>
+
+<!-- Trending Movies -->
+<!-- FOR MOBILE -->
+<div *ngIf="isSm && trending_movies3.length > 0">
+  <ngb-carousel [interval]="0" class="mycarousel">
+    <div *ngFor="let m of trending_movies3">
+      <div *ngIf="m.poster_path">
+        <ng-template ngbSlide>
+          <div class="row-m flex-nowrap">
+            <div class="col mycard">
+              <div class="card-img-caption">
+                <a href="/watch/movie/{{ m?.id }}">
+                  <img
+                    src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                    alt="{{m.title}}"
+                    class="slide-item"
+                    id="{{m?.id}}"
+                /></a>
+                <div class="my-carousel-caption2">
+                  <div class="card-text caption-font2">{{ m.title }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <!-- End mobile template -->
+  </ngb-carousel>
+  <!-- End movie container -->
+</div>
+
+<!-- Popular TV Shows -->
+<div class="movie-container">
+  <h2 class="section-heading">Popular TV Shows</h2>
+  <div *ngIf="isReg && !isSm">
+    <ngb-carousel [interval]="0" *ngIf="popular_tv2" class="mycarousel">
+      <div *ngFor="let arr of popular_tv2">
+        <!-- make row of 6 movies -->
+        <ng-template ngbSlide>
+          <div [ngClass]="{ 'row': arr.length == 6, 'row-less': arr.length < 6}" class="flex-nowrap">
+            <!-- for every row, add 6 movies from subarr -->
+            <div *ngFor="let m of arr">
+              <div *ngIf="m.poster_path">
+                <div class="col-xs-8 mycard">
+                  <div class="card-img-caption">
+                    <a href="/watch/tv/{{ m?.id }}">
+                      <img
+                        src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                        alt="{{m.title}}"
+                        class="slide-item"
+                        id="{{m?.id}}"
+                    /></a>
+                    <div class="my-carousel-caption2">
+                      <div class="card-text caption-font2">{{ m.name }}</div>
+                    </div>
+
+                    <!-- End of card-img-caption -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </ngb-carousel>
+  </div>
+</div>
+
+<!-- Popular TV Shows -->
+<!-- FOR MOBILE -->
+<div *ngIf="isSm && popular_tv3.length > 0">
+  <ngb-carousel [interval]="0" class="mycarousel">
+    <div *ngFor="let m of popular_tv3">
+      <div *ngIf="m.poster_path">
+        <ng-template ngbSlide>
+          <div class="row-m flex-nowrap">
+            <div class="col mycard">
+              <div class="card-img-caption">
+                <a href="/watch/tv/{{ m?.id }}">
+                  <img
+                    src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                    alt="{{m.title}}"
+                    class="slide-item"
+                    id="{{m?.id}}"
+                /></a>
+                <div class="my-carousel-caption2">
+                  <div class="card-text caption-font2">{{ m.title }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <!-- End mobile template -->
+  </ngb-carousel>
+  <!-- End movie container -->
+</div>
+
+<!-- Top Rated TV Shows -->
+<div class="movie-container">
+  <h2 class="section-heading">Top Rated TV Shows</h2>
+  <div *ngIf="isReg && !isSm">
+    <ngb-carousel [interval]="0" *ngIf="top_rated_tv2" class="mycarousel">
+      <div *ngFor="let arr of top_rated_tv2">
+        <!-- make row of 6 movies -->
+        <ng-template ngbSlide>
+          <div [ngClass]="{ 'row': arr.length == 6, 'row-less': arr.length < 6}" class="flex-nowrap">
+            <!-- for every row, add 6 movies from subarr -->
+            <div *ngFor="let m of arr">
+              <div *ngIf="m.poster_path">
+                <div class="col-xs-8 mycard">
+                  <div class="card-img-caption">
+                    <a href="/watch/tv/{{ m?.id }}">
+                      <img
+                        src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                        alt="{{m.title}}"
+                        class="slide-item"
+                        id="{{m?.id}}"
+                    /></a>
+                    <div class="my-carousel-caption2">
+                      <div class="card-text caption-font2">{{ m.name }}</div>
+                    </div>
+
+                    <!-- End of card-img-caption -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </ngb-carousel>
+  </div>
+</div>
+
+<!-- Top Rated TV Shows -->
+<!-- FOR MOBILE -->
+<div *ngIf="isSm && top_rated_tv3.length > 0">
+  <ngb-carousel [interval]="0" class="mycarousel">
+    <div *ngFor="let m of top_rated_tv3">
+      <div *ngIf="m.poster_path">
+        <ng-template ngbSlide>
+          <div class="row-m flex-nowrap">
+            <div class="col mycard">
+              <a href="/watch/tv/{{ m?.id }}">
+                <img
+                  src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                  alt="{{m.title}}"
+                  class="slide-item"
+                  id="{{m?.id}}"
+              /></a>
+              <div class="my-carousel-caption2">
+                <div class="card-text caption-font2">{{ m.title }}</div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <!-- End mobile template -->
+  </ngb-carousel>
+  <!-- End movie container -->
+</div>
+
+<!-- Trending TV Shows -->
+<div class="movie-container">
+  <h2 class="section-heading">Trending TV Shows</h2>
+  <div *ngIf="isReg && !isSm">
+    <ngb-carousel [interval]="0" *ngIf="trending_tv2" class="mycarousel">
+      <div *ngFor="let arr of trending_tv2">
+        <!-- make row of 6 movies -->
+        <ng-template ngbSlide>
+          <div [ngClass]="{ 'row': arr.length == 6, 'row-less': arr.length < 6}" class="flex-nowrap">
+            <!-- for every row, add 6 movies from subarr -->
+            <div *ngFor="let m of arr">
+              <div *ngIf="m.poster_path">
+                <div class="col-xs-8 mycard">
+                  <div class="card-img-caption">
+                    <a href="/watch/tv/{{ m?.id }}">
+                      <img
+                        src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                        alt="{{m.title}}"
+                        class="slide-item"
+                        id="{{m?.id}}"
+                    /></a>
+                    <div class="my-carousel-caption2">
+                      <div class="card-text caption-font2">{{ m.name }}</div>
+                    </div>
+                    <!-- End of card-img-caption -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </ngb-carousel>
+  </div>
+</div>
+
+<!-- Trending TV Shows -->
+<!-- FOR MOBILE -->
+<div *ngIf="isSm && trending_tv3.length > 0">
+  <ngb-carousel [interval]="0" class="mycarousel">
+    <div *ngFor="let m of trending_tv3">
+      <div *ngIf="m.poster_path">
+        <ng-template ngbSlide>
+          <div class="row-m flex-nowrap">
+            <div class="col mycard">
+              <div class="card-img-caption">
+                <a href="/watch/tv/{{ m?.id }}">
+                  <img
+                    src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}"
+                    alt="{{m.title}}"
+                    class="slide-item"
+                    id="{{m?.id}}"
+                /></a>
+                <div class="my-carousel-caption2">
+                  <div class="card-text caption-font2">{{ m.title }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <!-- End mobile template -->
+  </ngb-carousel>
+  <!-- End movie container -->
+</div>
