@@ -28,15 +28,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/watch/movie/:movie_id", movieDetailsRouter);
-app.use("/watch/tv/:movie_id", tvDetailsRouter);
-app.use("/search/:query", searchRouter);
-app.use("/mylist", myListRouter);
-app.use("/cast/:cast_id", castDetailsRouter);
+app.use("/apis/", indexRouter);
+app.use("/apis/users", usersRouter);
+app.use("/apis/watch/movie/:movie_id", movieDetailsRouter);
+app.use("/apis/watch/tv/:movie_id", tvDetailsRouter);
+app.use("/apis/search/:query", searchRouter);
+app.use("/apis/mylist", myListRouter);
+app.use("/apis/cast/:cast_id", castDetailsRouter);
 // redirect all other traffic to homepage
-app.use("/*", indexRouter);
+app.use("/apis/*", indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
