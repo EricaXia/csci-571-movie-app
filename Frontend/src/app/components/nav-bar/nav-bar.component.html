@@ -1,0 +1,47 @@
+<nav class="navbar sticky-top navbar-expand-md usc-navbar">
+  <ul class="navbar-nav site-title">
+    <li class="nav-item">
+      <a class="navbar-brand nav-text" routerLink="/">{{ title }}</a>
+    </li>
+  </ul>
+
+  <!-- Hide this on smaller screens into the toggle menu: -->
+  <button class="navbar-toggler my-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+    <span style="color:grey;">&#9776;</span>
+  </button>
+
+
+  <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+    <ul class="navbar-nav link-names">
+      <li class="nav-item">
+        <a class="nav-link nav-link-text" routerLink="/"> Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link nav-link-text" routerLink="/mylist"> My List </a>
+      </li>
+    </ul>
+
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <form class="d-flex">
+          <ng-template #rt let-r="result" let-t="term">
+            <a [href]="r.weblink" class="search-link"><img [src]="r['img_path']" class="mr-1" style="width: 100px; padding-right: 10px;">
+              <ngb-highlight [result]="r.title" [term]="t"></ngb-highlight>
+            </a>
+          </ng-template>
+          <input id="typeahead-basic" type="text"
+            class="form-control my-search-bar"
+            placeholder="Search"
+            [ngbTypeahead]="search"
+            [resultFormatter]="resultFormatResults"
+            [resultTemplate]="rt"
+/>
+        </form>
+      </li>
+    </ul>
+
+    <!-- Ends the toggle menu -->
+  </div>
+
+</nav>

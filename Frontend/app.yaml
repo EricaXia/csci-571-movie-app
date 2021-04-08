@@ -1,0 +1,8 @@
+runtime: nodejs14 
+handlers:
+  - url: /(.*\.(js|css|svg|png)(|\.map))$
+    static_files: dist/movie-app/\1
+    upload: dist/movie-app/(.*)(|\.map)
+  - url: /.*
+    static_files: dist/movie-app>/index.html
+    upload: dist/movie-app/.*

@@ -1,0 +1,85 @@
+.modal-body {
+  width: 100%;
+  padding: 5% 5% 2% 5%;
+  /* padding-bottom: 0; */
+  display: flex;
+  flex-direction: column;
+  /* input {
+    margin-bottom: 10px;
+  } */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: black;
+}
+/* change modal screen sizes */
+@media only screen and (min-width: 1600px) {
+  .modal-img {
+    width: 300px;
+    padding-bottom: 20px;
+  }
+
+  .img-box {
+    text-align: left;
+    padding-right: 0px;
+    margin-right: 0;
+  }
+
+  .details-col {
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
+@media only screen and (max-width: 1599px) {
+  .modal-img {
+    width: 200px;
+    padding-bottom: 20px;
+  }
+
+  .img-box {
+    text-align: left;
+    padding-right: 0px;
+    margin-right: 0px;
+  }
+
+  .details-col {
+    margin-left: -600px;
+  }
+}
+
+/* MOBILE */
+@media only screen and (max-width: 600px) {
+  .modal-img {
+    width: 98%;
+    padding-bottom: 5px;
+  }
+
+  .img-box {
+    padding-left: 3%;
+    justify-content: center;
+  }
+
+  .details-m {
+    padding-left: 2%;
+  }
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  font-size: larger;
+  /* color: inherit; */
+}
+
+.icon {
+  display: inline;
+  padding-right: 2%;
+}

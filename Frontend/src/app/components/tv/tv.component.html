@@ -1,0 +1,382 @@
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0"
+  nonce="cU8SBHAh"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<div class="container">
+  <div *ngIf="!details">
+    <p>Loading...</p>
+  </div>
+
+  <!-- for reg screens: -->
+  <div *ngIf="video && details && !isSm" class="row flex-nowrap my-row">
+    <!-- <p>Video here:</p> -->
+    <div class="col-video justify-content-left">
+      <youtube-player videoId="{{ video_id }}" suggestedQuality="highres">
+      </youtube-player>
+    </div>
+    <!-- Details here -->
+    <div *ngIf="details">
+      <div class="col-details">
+        <h2 style="font-weight:300;padding-top:1%;">{{ details.title }}</h2>
+        <p style="padding-bottom:3%;"><i>{{ details.tagline }}</i></p>
+        <p style="font-size:larger;font-weight:300;">
+          {{ details.year }}&ensp;|&ensp;★ {{ details.vote_average
+          }}&ensp;|&ensp;{{ details.runtime_hrs }}
+        </p>
+        <p class="details-text"><b>Genres: </b>{{ details.genres_list }}</p>
+        <p class="details-text"><b>Spoken Languages: </b>{{ details.langs }}</p>
+
+        <!-- Add to Watchlist -->
+        <button type="button" class="btn btn-primary btn-wl" (click)="addtoWL()">
+          {{ btn_text }}
+        </button>
+        <!-- If added to WL, show alert -->
+        <ngb-alert *ngIf="!isAdd" [type]="'success'" [dismissible]="true" class="add-alert">Added to Watchlist
+        </ngb-alert>
+
+
+      </div>
+    </div>
+    <!-- Ends row -->
+  </div>
+  <!-- Descrip here -->
+  <div *ngIf="isReg && !isSm" class="row flex-nowrap my-row">
+    <div *ngIf="details" class="descrip">
+      <p class="details-title">Description</p>
+      <p class="desc-text">
+        {{ details.overview }}
+      </p>
+    </div>
+  </div>
+  <!-- END for reg screens: -->
+
+  <!-- For MOBILE: -->
+  <!-- default height=390,width=640 ,height=195 width=320-->
+  <div *ngIf="video && isSm" class="vid-m flex-nowrap">
+    <youtube-player videoId="{{ video_id }}" suggestedQuality="highres" height=195 width=320>
+    </youtube-player>
+  </div>
+
+  <div *ngIf="details && isSm" class="details-m flex-nowrap">
+    <h2>{{ details.title }}</h2>
+    <p><i>{{ details.tagline }}</i></p>
+    <p>
+      {{ details.year }}&ensp;|&ensp;★ {{ details.vote_average }}&ensp;|&ensp;{{
+      details.runtime_hrs }}
+    </p>
+    <p class="details-text"><b>Genres: </b>{{ details.genres_list }}</p>
+    <p class="details-text"><b>Spoken Languages: </b>{{ details.langs }}</p>
+    <button type="button" class="btn btn-primary" (click)="addtoWL()">
+          {{ btn_text }}
+        </button>
+  </div>
+  <!-- descrip here -->
+  <div *ngIf="isSm" class="details-m flex-nowrap my-row">
+    <div *ngIf="details" class="descrip">
+      <p class="details-title">Description</p>
+      <p class="desc-text">
+        {{ details.overview }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Share buttons -->
+  <div class="share-div" *ngIf="isReg && !isSm && video">
+    <p class="details-title">Share</p>
+    <a class="twitter-share-button share-btn"
+      href="https://twitter.com/intent/tweet?url={{ video }}&text=Watch%20{{ details.title }}&hashtags=USC%20%23CSCI571%20%23FightOn"
+      target="_blank">
+      <fa-icon [icon]="faTwitter" style="color:#558FE9;" class="fas fa-2x"></fa-icon>
+    </a>
+    <div class="fb-share-button share-btn" data-layout="button_count" data-size="small">
+      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ video }}&amp;src=sdkpreparse"
+        class="fb-xfbml-parse-ignore">
+        <fa-icon [icon]="faFacebook" style="color:#393EE8;" class="fas fa-2x"></fa-icon>
+      </a>
+    </div>
+  </div>
+
+  <!-- Share buttons MOBILE -->
+  <div class="details-m flex-nowrap my-row" *ngIf="isSm">
+    <p class="details-title">Share</p>
+    <a class="twitter-share-button share-btn"
+      href="https://twitter.com/intent/tweet?url={{ video }}&text=Watch%20{{ details.title }}&hashtags=USC%20%23CSCI571%20%23FightOn"
+      target="_blank">
+      <fa-icon [icon]="faTwitter" style="color:#558FE9;" class="fas fa-2x"></fa-icon>
+    </a>
+    <div class="fb-share-button share-btn" data-layout="button_count" data-size="small">
+      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ video }}&amp;src=sdkpreparse"
+        class="fb-xfbml-parse-ignore">
+        <fa-icon [icon]="faFacebook" style="color:#393EE8;" class="fas fa-2x"></fa-icon>
+      </a>
+    </div>
+  </div>
+
+  <!-- Cast cards carousel -->
+  <div *ngIf="cast" class="row cast-container">
+    <div *ngIf="isReg && !isSm">
+      <h3>Full Cast and Crew</h3>
+    </div>
+
+    <div *ngIf="isSm" class="details-m">
+      <h3>Full Cast and Crew</h3>
+    </div>
+
+    <div class="container-fluid py-2 my-container-fluid">
+      <div class="d-flex flex-row flex-nowrap overflow-auto my-flex">
+        <div *ngFor="let c of cast | keyvalue">
+          <!-- each card in its own column -->
+          <div class="col">
+            <!-- <div (click)="openModal(c.value.id)">Get info</div> -->
+            <div (click)="openModal(c.value.id)" class="open-modal">
+              <div class=" card border-0 my-card" id="{{ c.value.id }}">
+                <img
+                  class="card-img-top my-card-img"
+                  src="{{ c.value.img_path }}"
+                />
+                <div class="card-body">
+                  <!-- <button (click)="openModal(this.value);" id="{{ c.value.id }}">Info</button> -->
+                  <p class="card-text my-card-text">
+                    <b>{{ c.value.name }}</b> <br />
+                    <span style="font-weight:800;">AS</span>
+                    <br />
+                    {{ c.value.character }}
+                  </p>
+                </div>
+
+                <!-- End the 'open modal' div -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- End row -->
+      </div>
+      <!-- End container -->
+    </div>
+  </div>
+
+  <!-- REVIEWS rREGULAR-->
+  <div *ngIf="reviews?.length > 0">
+    <div *ngIf="isReg && !isSm">
+      <h3>Reviews {{ reviews.length }}</h3>
+      <div *ngFor="let r of reviews | keyvalue">
+        <div class="card review-card">
+          <div class="card-body review-card">
+            <div class="row">
+              <div class="col-2 d-flex justify-content-center">
+                <img src="{{ r.value.img_path }}" class="avatar" />
+              </div>
+              <div class="col">
+                <h4 class="review-font">
+                  A review created by {{ r.value.author }}
+                </h4>
+                <div class="rating">★{{ r.value.author_details.rating }}</div>
+
+                <p class="review-font-gray">
+                  <br />Written by {{ r.value.author }} on {{ r.value.review_date
+                }}
+                </p>
+                <p class="review-font">
+                  {{ (r.value.content | slice:0:320) + '...' }}
+                </p>
+                <a class="review-link" href="{{ r.value.url }}" target="_blank">Read the rest</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- REVIEWS MOBILE -->
+  <div *ngIf="reviews?.length > 0">
+    <div *ngIf="isSm">
+      <h3>Reviews {{ reviews.length }}</h3>
+      <div *ngFor="let r of reviews | keyvalue">
+        <div class="card review-card">
+          <div class="card-body">
+
+            <!-- Avatar row -->
+            <div class="row flex-wrap">
+              <div class="col d-flex justify-content-left">
+                <img src="{{ r.value.img_path }}" class="avatar" />
+              </div>
+            </div>
+
+            <!-- review text row -->
+            <div class="row flex-wrap">
+              <div class="col">
+                <h4 class="review-font">
+                  A review created by {{ r.value.author }}
+                </h4>
+              </div>
+            </div>
+
+            <div class="row flex-wrap">
+              <div class="col">
+                <div class="rating">★{{ r.value.author_details.rating }}</div>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="row flex-wrap">
+              <div class="col">
+
+                <p class="review-font-gray">
+                  <br />Written by {{ r.value.author }} on {{ r.value.review_date
+                }}
+                </p>
+                <p class="review-font">
+                  {{ (r.value.content | slice:0:109) + '...' }}
+                </p>
+                <a class="review-link" href="{{ r.value.url }}" target="_blank">Read the rest</a>
+              </div>
+              <!-- end row -->
+            </div>
+            <!-- end cardbody -->
+          </div>
+          <!-- end card -->
+        </div>
+        <!-- end ngfor -->
+      </div>
+      <!-- end ngif -->
+    </div>
+  </div>
+
+  <!-- ends main container -->
+</div>
+
+
+
+
+<!-- CAAROUSELS -->
+<!-- Rec Movies -->
+<div class="movie-container">
+  <h2 class="section-heading">Recommended Movies</h2>
+  <!-- For REGULAR size -->
+  <div *ngIf="isReg && !isSm">
+    <ngb-carousel [interval]="0" *ngIf="recommended_movies2" class="mycarousel">
+      <div *ngFor="let arr of recommended_movies2">
+        <!-- make row of 6 movies -->
+        <ng-template ngbSlide>
+          <div class="row flex-nowrap">
+            <!-- for every row, add 6 movies from subarr -->
+            <div *ngFor="let m of arr">
+              <div *ngIf="m.poster_path">
+                <!-- For each movie in subarr of 6  movies, make this: -->
+                <div class="col-xs-8 mycard">
+                  <!-- Container for link, image, and caption: -->
+                  <div class="card-img-caption">
+                    <a href="/watch/movie/{{ m?.id }}">
+                      <img src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}" alt="{{m.title}}" class="slide-item"
+                        id="{{m?.id}}" /></a>
+                    <div class="my-carousel-caption2">
+                      <div class="card-text caption-font2">{{ m.title }}</div>
+                    </div>
+                    <!-- End of card-img-caption -->
+                  </div>
+                  <!-- End of mycard -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </ngb-carousel>
+  </div>
+</div>
+<!-- FOR MOBILE -->
+<div *ngIf="isSm && recommended_movies3.length > 0">
+  <ngb-carousel [interval]="0" class="mycarousel">
+    <div *ngFor="let m of recommended_movies3">
+      <div *ngIf="m.poster_path">
+        <ng-template ngbSlide>
+          <div class="row-m flex-nowrap">
+            <div class="col mycard">
+              <div class="card-img-caption">
+                <a href="/watch/movie/{{ m?.id }}">
+                  <img src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}" alt="{{m.title}}" class="slide-item"
+                  id="{{m?.id}}" /></a>
+                <div class="my-carousel-caption2">
+                  <div class="card-text caption-font2">{{ m.title }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <!-- End ngFor -->
+      </div>
+    </div>
+    <!-- End mobile template -->
+  </ngb-carousel>
+  <!-- End movie container -->
+</div>
+
+
+<!-- Sim Movies -->
+<div class="movie-container">
+  <h2 class="section-heading">Similar Movies</h2>
+  <!-- For REGULAR size -->
+  <div *ngIf="isReg && !isSm">
+    <ngb-carousel [interval]="0" *ngIf="similar_movies2" class="mycarousel">
+      <div *ngFor="let arr of similar_movies2">
+        <!-- make row of 6 movies -->
+        <ng-template ngbSlide>
+          <div class="row flex-nowrap">
+            <!-- for every row, add 6 movies from subarr -->
+            <div *ngFor="let m of arr">
+              <div *ngIf="m.poster_path">
+                <!-- For each movie in subarr of 6  movies, make this: -->
+                <div class="col-xs-8 mycard">
+                  <!-- Container for link, image, and caption: -->
+                  <div class="card-img-caption">
+                    <a href="/watch/movie/{{ m?.id }}">
+                      <img src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}" alt="{{m.title}}" class="slide-item"
+                        id="{{m?.id}}" /></a>
+                    <div class="my-carousel-caption2">
+                      <div class="card-text caption-font2">{{ m.title }}</div>
+                    </div>
+                    <!-- End of card-img-caption -->
+                  </div>
+                  <!-- End of mycard -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </ngb-carousel>
+  </div>
+</div>
+<!-- FOR MOBILE -->
+<div *ngIf="isSm && similar_movies3.length > 0">
+  <ngb-carousel [interval]="0" class="mycarousel">
+    <div *ngFor="let m of similar_movies3">
+      <div *ngIf="m.poster_path">
+        <ng-template ngbSlide>
+          <div class="row-m flex-nowrap">
+            <div class="col mycard">
+              <div class="card-img-caption">
+                <a href="/watch/movie/{{ m?.id }}">
+                  <img src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}" alt="{{m.title}}" class="slide-item"
+                  id="{{m?.id}}" /></a>
+                <div class="my-carousel-caption2">
+                  <div class="card-text caption-font2">{{ m.title }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <!-- End ngFor -->
+      </div>
+    </div>
+    <!-- End mobile template -->
+  </ngb-carousel>
+  <!-- End movie container -->
+</div>

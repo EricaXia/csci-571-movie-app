@@ -1,0 +1,23 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  color: white;
+}
+
+body {
+  margin: auto;
+  padding: 1% 15% 1% 15%;
+}
+
+.row {
+  justify-content: flex-start;
+}
+
+.mycard {
+  flex-wrap: wrap;
+  flex-direction: row;
+  z-index: 0;
+}

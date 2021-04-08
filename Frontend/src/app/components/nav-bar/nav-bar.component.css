@@ -1,0 +1,87 @@
+.usc-navbar {
+  background-color: #040c22;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.nav-text {
+  color: white;
+}
+
+a.nav-link-text:link {
+  color: #6c7085;
+}
+
+a.nav-link-text:active,
+a.nav-link-text:visited {
+  color: white;
+}
+
+a.nav-link-text:hover {
+  color: #555d73;
+}
+
+.site-title {
+  padding-left: 3%;
+}
+
+.link-names {
+  padding-left: 1%;
+}
+
+.s-img {
+  max-width: 50px;
+}
+
+.my-search-bar {
+  background-color: transparent !important;
+  color: white !important;
+  border-style: none none solid none;
+  border-bottom: 1px solid white;
+  border-radius: 0 !important;
+  margin-right: 50px;
+}
+
+.dropdown-menu {
+  background-color: #080c33 !important;
+  color: white !important;
+  left: -10% !important;
+  right: 10% !important;
+  width: 500px;
+}
+
+.dropdown-item {
+  width: inherit;
+  background-color: #080c33;
+  color: white !important;
+  padding: 10px 50px 10px 10px;
+}
+
+.dropdown-item:hover {
+  background-color: #2789ff !important;
+}
+
+.search-link {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+.search-link {
+  color: white; /* blue colors for links too */
+  text-decoration: none; /* no underline */
+}
+
+.search-link:hover {
+  color: white; /* blue colors for links too */
+  text-decoration: none; /* no underline */
+}
+
+.search-link:active {
+  color: white; /* blue colors for links too */
+  text-decoration: none; /* no underline */
+}
+
+/* mobile */
+.my-toggler {
+  padding-right: 10%;
+}
