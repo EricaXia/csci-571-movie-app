@@ -1,39 +1,24 @@
 <body>
+  <div *ngIf="wl.length === 0">
+    <h1 class="noitemsfound">No items found in WatchList.</h1>
+  </div>
+
+  <div *ngIf="wl.length > 0">
   <h1>My WatchList</h1>
-  <div *ngIf="wl">
     <div *ngFor="let arr of wl">
-      <!-- make row of 6 movies -->
       <div class="row flex-nowrap">
-
-
-
         <div *ngFor="let m of arr">
-
-
-          <!-- For each movie in subarr of 6  movies, make this: -->
           <div class="col-md col-lg mycard">
-
-            <!-- Container for link, image, and caption: -->
             <div class="card-img-caption">
               <a href="/watch/movie/{{ m?.id }}">
                 <img src="https://image.tmdb.org/t/p/w200{{m?.poster_path}}" alt="{{m.title}}" class="slide-item"
                         id="{{m?.id}}" /></a>
               <div class="my-carousel-caption2">
                 <div class="card-text caption-font2">{{ m.title }}</div>
-                <!-- End card-img-caption -->
               </div>
-              <!-- End mycard -->
             </div>
-            <!-- End ngFor -->
-
-
-
-
-
-
         </div>
       </div>
-
     </div>
   </div>
   </div>

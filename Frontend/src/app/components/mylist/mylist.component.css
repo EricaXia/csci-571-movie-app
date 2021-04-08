@@ -21,3 +21,8 @@ body {
   flex-direction: row;
   z-index: 0;
 }
+
+.noitemsfound {
+  padding-top: 5%;
+  text-align: center;
+}
