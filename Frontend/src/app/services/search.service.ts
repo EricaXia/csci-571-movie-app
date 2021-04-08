@@ -12,8 +12,8 @@ export class SearchService {
   public results: any = [];
 
   getSearchData(query: String) {
-    // let URL = `https://csci-571-movie-app-backend.wl.r.appspot.com/search/${query}`;
-    let URL = `http://localhost:8080/apis/search/${query}`;
+    let URL = `https://csci-571-combined.wl.r.appspot.com/apis/search/${query}`;
+    // let URL = `http://localhost:8080/apis/search/${query}`;
 
     console.log(
       "getSearchData() in searchService executed. this is query:",
