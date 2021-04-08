@@ -8,8 +8,8 @@ export class HomeService {
   constructor(private httpClient: HttpClient) {}
 
   getHomeData() {
-    let URL = "https://csci-571-movie-app-backend.wl.r.appspot.com/";
-    // let URL = "http://localhost:3000/"
+    // let URL = "https://csci-571-movie-app-backend.wl.r.appspot.com/";
+    let URL = "http://localhost:8080/apis/"
     return this.httpClient.get(URL);
   }
 }

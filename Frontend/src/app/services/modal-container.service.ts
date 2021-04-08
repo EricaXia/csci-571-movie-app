@@ -10,8 +10,8 @@ export class ModalContainerService {
   constructor(private httpClient: HttpClient) {}
 
   getModalData(cast_id: any) {
-    let URL = `https://csci-571-movie-app-backend.wl.r.appspot.com/cast/${cast_id}`;
-    // let URL = `http://localhost:3000/cast/${cast_id}`;
+    // let URL = `https://csci-571-movie-app-backend.wl.r.appspot.com/cast/${cast_id}`;
+    let URL = `http://localhost:8080/apis/cast/${cast_id}`;
 
     return this.httpClient.get(URL);
   }
