@@ -2030,8 +2030,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(HomeService, [{
         key: "getHomeData",
         value: function getHomeData() {
-          // let URL = "https://csci-571-movie-app-backend.wl.r.appspot.com/";
-          var URL = "http://localhost:8080/apis/";
+          var URL = "https://csci-571-combined.wl.r.appspot.com/apis/"; // let URL = "http://localhost:8080/apis/"
+
           return this.httpClient.get(URL);
         }
       }]);
@@ -2192,8 +2192,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ModalContainerService, [{
         key: "getModalData",
         value: function getModalData(cast_id) {
-          // let URL = `https://csci-571-movie-app-backend.wl.r.appspot.com/cast/${cast_id}`;
-          var URL = "http://localhost:8080/apis/cast/".concat(cast_id);
+          var URL = "https://csci-571-combined.wl.r.appspot.com/apis/cast/".concat(cast_id); // let URL = `http://localhost:8080/apis/cast/${cast_id}`;
+
           return this.httpClient.get(URL);
         }
       }]);
@@ -2261,8 +2261,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(MovieService, [{
         key: "getDetailsData",
         value: function getDetailsData(media_type, id) {
-          // let URL = `https://csci-571-movie-app-backend.wl.r.appspot.com/watch/${media_type}/${id}`;
-          var URL = "http://localhost:8080/apis/".concat(media_type, "/").concat(id);
+          var URL = "https://csci-571-combined.wl.r.appspot.com/apis/watch/".concat(media_type, "/").concat(id); // let URL = `http://localhost:8080/apis/${media_type}/${id}`;
+
           return this.httpClient.get(URL);
         }
       }]);
@@ -2331,8 +2331,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(SearchService, [{
         key: "getSearchData",
         value: function getSearchData(query) {
-          // let URL = `https://csci-571-movie-app-backend.wl.r.appspot.com/search/${query}`;
-          var URL = "http://localhost:8080/apis/search/".concat(query);
+          var URL = "https://csci-571-combined.wl.r.appspot.com/apis/search/".concat(query); // let URL = `http://localhost:8080/apis/search/${query}`;
+
           console.log("getSearchData() in searchService executed. this is query:", query);
           console.log(URL); // returns an Observable
 

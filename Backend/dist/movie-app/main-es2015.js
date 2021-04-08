@@ -1347,8 +1347,8 @@ let HomeService = class HomeService {
         this.httpClient = httpClient;
     }
     getHomeData() {
-        // let URL = "https://csci-571-movie-app-backend.wl.r.appspot.com/";
-        let URL = "http://localhost:8080/apis/";
+        let URL = "https://csci-571-combined.wl.r.appspot.com/apis/";
+        // let URL = "http://localhost:8080/apis/"
         return this.httpClient.get(URL);
     }
 };
@@ -1445,8 +1445,8 @@ let ModalContainerService = class ModalContainerService {
         this.httpClient = httpClient;
     }
     getModalData(cast_id) {
-        // let URL = `https://csci-571-movie-app-backend.wl.r.appspot.com/cast/${cast_id}`;
-        let URL = `http://localhost:8080/apis/cast/${cast_id}`;
+        let URL = `https://csci-571-combined.wl.r.appspot.com/apis/cast/${cast_id}`;
+        // let URL = `http://localhost:8080/apis/cast/${cast_id}`;
         return this.httpClient.get(URL);
     }
 };
@@ -1484,8 +1484,8 @@ let MovieService = class MovieService {
         this.httpClient = httpClient;
     }
     getDetailsData(media_type, id) {
-        // let URL = `https://csci-571-movie-app-backend.wl.r.appspot.com/watch/${media_type}/${id}`;
-        let URL = `http://localhost:8080/apis/${media_type}/${id}`;
+        let URL = `https://csci-571-combined.wl.r.appspot.com/apis/watch/${media_type}/${id}`;
+        // let URL = `http://localhost:8080/apis/${media_type}/${id}`;
         return this.httpClient.get(URL);
     }
 };
@@ -1524,8 +1524,8 @@ let SearchService = class SearchService {
         this.results = [];
     }
     getSearchData(query) {
-        // let URL = `https://csci-571-movie-app-backend.wl.r.appspot.com/search/${query}`;
-        let URL = `http://localhost:8080/apis/search/${query}`;
+        let URL = `https://csci-571-combined.wl.r.appspot.com/apis/search/${query}`;
+        // let URL = `http://localhost:8080/apis/search/${query}`;
         console.log("getSearchData() in searchService executed. this is query:", query);
         console.log(URL);
         // returns an Observable
