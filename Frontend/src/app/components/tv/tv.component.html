@@ -251,12 +251,14 @@
   <!-- ends main container -->
 </div>
 
+</div>
+
 
 
 
 <!-- CAAROUSELS -->
-<!-- Rec Movies -->
-<div class="movie-container">
+<!-- Rec TV Shows -->
+<div class="movie-container" *ngIf="recommended_movies2">
   <h2 class="section-heading">Recommended TV Shows</h2>
   <!-- For REGULAR size -->
   <div *ngIf="isReg && !isSm">
@@ -319,7 +321,7 @@
 
 
 <!-- Sim TV Shows -->
-<div class="movie-container">
+<div class="movie-container" *ngIf="similar_movies2">
   <h2 class="section-heading">Similar TV Shows</h2>
   <!-- For REGULAR size -->
   <div *ngIf="isReg && !isSm">

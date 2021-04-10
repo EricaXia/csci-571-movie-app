@@ -110,7 +110,7 @@ export class TvComponent implements OnInit {
       console.log("Got details data from backend");
 
       // Youtube trailer
-      if (!this.movie_data.video.results[0].key) {
+      if (!this.movie_data.video.results[0]) {
         this.video = "https://www.youtube.com/watch?v=tzkWB85ULJY";
         this.video_id = "tzkWB85ULJY";
       } else {
